@@ -11,7 +11,7 @@ type FlyAndScaleParams = {
 const defaultFlyAndScaleParams = {
   y: -8,
   start: 0.9,
-  duration: 200,
+  duration: 300,
 };
 
 // Credits: https://github.com/huntabyte/bits-ui/blob/bits-ui%400.21.7/sites/docs/src/lib/utils/transitions.ts

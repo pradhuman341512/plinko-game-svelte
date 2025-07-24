@@ -25,8 +25,8 @@
         { transform: 'translateY(0)' },
       ],
       {
-        duration: 300,
-        easing: 'cubic-bezier(0.18, 0.89, 0.32, 1.28)',
+        duration: 400,
+        easing: 'cubic-bezier(0.18, 0.89, 0.32, 0.28)',
       },
     );
     bounceAnimation.pause(); // Don't run the animation immediately
@@ -63,7 +63,7 @@
           style:background-color={binColorsByRowCount[$rowCount].background[binIndex]}
           style:--shadow-color={binColorsByRowCount[$rowCount].shadow[binIndex]}
         >
-          {payout}{payout < 100 ? '×' : ''}
+          {payout}{payout < 100 ? '×' : 'x'}
         </div>
       {/each}
     </div>

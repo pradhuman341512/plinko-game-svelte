@@ -16,7 +16,7 @@
   />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Plinko" />
-  <!-- <meta property="og:url" content="https://plinko-web-game.netlify.app/" /> -->
+  <!-- <meta property="og:url" content="https://68814765b197e20008e55b85--plinkogameplay.netlify.app/" /> -->
   <meta property="og:image" content={ogImage} />
 </svelte:head>
 
