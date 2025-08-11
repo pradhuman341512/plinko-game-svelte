@@ -69,12 +69,12 @@ class PlinkoEngine {
    */
   private pinsLastRowXCoords: number[] = [];
 
-  static WIDTH = 760;
+  static WIDTH = 700;
   static HEIGHT = 570;
 
   private static PADDING_X = 52;
   private static PADDING_TOP = 36;
-  private static PADDING_BOTTOM = 28;
+  private static PADDING_BOTTOM = 36;
 
   private static PIN_CATEGORY = 0x0001;
   private static BALL_CATEGORY = 0x0002;
@@ -121,7 +121,7 @@ class PlinkoEngine {
 
     this.engine = Matter.Engine.create({
       timing: {
-        timeScale: 1,
+        timeScale: 0.8,
       },
     });
     this.render = Matter.Render.create({
@@ -183,7 +183,7 @@ class PlinkoEngine {
    * Drops a new ball from the top with a random horizontal offset, and deducts the balance.
    */
   dropBall() {
-    const ballOffsetRangeX = this.pinDistanceX * 0.8;
+    const ballOffsetRangeX = this.pinDistanceX * 0.9;
     const ballRadius = this.pinRadius * 2;
     const { friction, frictionAirByRowCount } = PlinkoEngine.ballFrictions;
 
@@ -195,7 +195,7 @@ class PlinkoEngine {
       0,
       ballRadius,
       {
-        restitution: 0.8, // Bounciness
+        restitution: 0.9, // Bounciness
         friction,
         frictionAir: frictionAirByRowCount[this.rowCount],
         collisionFilter: {

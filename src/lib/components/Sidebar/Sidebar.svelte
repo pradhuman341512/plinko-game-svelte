@@ -65,27 +65,29 @@
   }
 
   function autoBetDropBall() {
-    if (isBetExceedBalance) {
-      resetAutoBetInterval();
-      return;
-    }
-
-    // Infinite mode
-    if (autoBetsLeft === null) {
-      $plinkoEngine?.dropBall();
-      return;
-    }
-
-    // Finite mode
-    if (autoBetsLeft > 0) {
-      $plinkoEngine?.dropBall();
-      autoBetsLeft -= 1;
-    }
-    if (autoBetsLeft === 0 && autoBetInterval !== null) {
-      resetAutoBetInterval();
-      return;
-    }
+  if ($balance <= 0 || isBetExceedBalance) {
+    alert('Insufficient balance!');
+    resetAutoBetInterval();
+    return;
   }
+
+  // Infinite mode
+  if (autoBetsLeft === null) {
+    $plinkoEngine?.dropBall();
+    return;
+  }
+
+  // Finite mode
+  if (autoBetsLeft > 0) {
+    $plinkoEngine?.dropBall();
+    autoBetsLeft -= 1;
+  }
+
+  if (autoBetsLeft === 0 && autoBetInterval !== null) {
+    resetAutoBetInterval();
+  }
+}
+
 
   const handleAutoBetInputFocusOut: FormEventHandler<HTMLInputElement> = (e) => {
     const parsedValue = parseInt(e.currentTarget.value.trim());
@@ -96,17 +98,22 @@
       autoBetInput = parsedValue;
     }
   };
-
-  function handleBetClick() {
-    if (betMode === BetMode.MANUAL) {
-      $plinkoEngine?.dropBall();
-    } else if (autoBetInterval === null) {
-      autoBetsLeft = autoBetInput === 0 ? null : autoBetInput;
-      autoBetInterval = setInterval(autoBetDropBall, autoBetIntervalMs);
-    } else if (autoBetInterval !== null) {
-      resetAutoBetInterval();
-    }
+function handleBetClick() {
+  if ($balance <= 0) {
+    alert('Insufficient balance!');
+    return;
   }
+
+  if (betMode === BetMode.MANUAL) {
+    $plinkoEngine?.dropBall();
+  } else if (autoBetInterval === null) {
+    autoBetsLeft = autoBetInput === 0 ? null : autoBetInput;
+    autoBetInterval = setInterval(autoBetDropBall, autoBetIntervalMs);
+  } else {
+    resetAutoBetInterval();
+  }
+}
+
 
   const betModes = [
     { value: BetMode.MANUAL, label: 'Manual' },

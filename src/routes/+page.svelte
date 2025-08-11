@@ -7,7 +7,7 @@
   import Sidebar from '$lib/components/Sidebar';
   import { setBalanceFromLocalStorage, writeBalanceToLocalStorage } from '$lib/utils/game';
   import GitHubLogo from 'phosphor-svelte/lib/GithubLogo';
-
+import UserDetails from '$lib/components/UserDetails.svelte';
   $effect(() => {
     setBalanceFromLocalStorage();
   });
@@ -21,6 +21,9 @@
       <img src={logo} alt="logo" class="h-6 sm:h-7" />
       <div class="mx-auto">
         <Balance />
+      </div>
+      <div class="">
+   <UserDetails />        
       </div>
     </div>
   </nav>

@@ -2,6 +2,12 @@
   import { balance } from '$lib/stores/game';
   import { flyAndScale } from '$lib/utils/transitions';
   import { Popover } from 'bits-ui';
+  import { initBalance } from '$lib/stores/game';
+  import {onMount} from 'svelte';
+
+  onMount(() => {
+    initBalance();
+  });
 
   let balanceFormatted = $derived(
     $balance.toLocaleString('en-US', {

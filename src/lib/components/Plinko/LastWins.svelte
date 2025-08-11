@@ -27,7 +27,7 @@
       class="flex aspect-square items-center justify-center font-bold text-gray-950"
       style:background-color={binColorsByRowCount[rowCount].background[binIndex]}
     >
-      {multiplier}{multiplier < 100 ? '×' : ''}
+      {multiplier}{multiplier < 100 ? '×' : 'x'}
     </div>
   {/each}
 </div>

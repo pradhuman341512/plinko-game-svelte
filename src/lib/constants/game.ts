@@ -1,34 +1,29 @@
+import { balance } from '$lib/stores/game';   
 import { RiskLevel } from '$lib/types';
 import { getBinColors } from '$lib/utils/colors';
 import { computeBinProbabilities } from '$lib/utils/numbers';
 
-export const DEFAULT_BALANCE = 200;
+
+/**
+ * User Data Interface
+ * 
+ */
+
+
 
 export const LOCAL_STORAGE_KEY = {
-  BALANCE: 'plinko_balance',
   SETTINGS: {
+    // BALANCE: 'plinko_balance',
     ANIMATION: 'plinko_settings_animation',
   },
 } as const;
 
-/**
- * Range of row counts the game supports.
- */
+// -------------------------- Game Config --------------------------
+
 export const rowCountOptions = [8, 9, 10, 11, 12, 13, 14, 15, 16] as const;
-
-/**
- * Number of rows of pins the game supports.
- */
 export type RowCount = (typeof rowCountOptions)[number];
-
-/**
- * Interval (in milliseconds) for placing auto bets.
- */
 export const autoBetIntervalMs = 250;
 
-/**
- * For each row count, the background and shadow colors of each bin.
- */
 export const binColorsByRowCount = rowCountOptions.reduce(
   (acc, rowCount) => {
     acc[rowCount] = getBinColors(rowCount);
@@ -37,9 +32,6 @@ export const binColorsByRowCount = rowCountOptions.reduce(
   {} as Record<RowCount, ReturnType<typeof getBinColors>>,
 );
 
-/**
- * For each row count, what's the probabilities of a ball falling into each bin.
- */
 export const binProbabilitiesByRowCount: Record<RowCount, number[]> = rowCountOptions.reduce(
   (acc, rowCount) => {
     acc[rowCount] = computeBinProbabilities(rowCount);
@@ -48,6 +40,9 @@ export const binProbabilitiesByRowCount: Record<RowCount, number[]> = rowCountOp
   {} as Record<RowCount, number[]>,
 );
 
+// ... binPayouts and binColor unchanged ...
+
+export const DEFAULT_BALANCE = 1000;
 /**
  * Multipliers of each bin by row count and risk level.
  */

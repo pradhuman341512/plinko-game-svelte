@@ -21,7 +21,7 @@
 </script>
 
 <div class="relative bg-gray-900">
-  <div class="mx-auto flex h-full flex-col px-4 pb-4" style:max-width={`${WIDTH}px`}>
+  <div class="mx-auto flex h-full flex-col px-12 pb-6 " style:max-width={`${WIDTH}px`}>
     <div class="relative w-full" style:aspect-ratio={`${WIDTH} / ${HEIGHT}`}>
       {#if $plinkoEngine === null}
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
