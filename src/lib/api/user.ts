@@ -11,7 +11,7 @@ export interface UserData {
  * Fetch User Data from API
  */export async function fetchUserData(): Promise<UserData | null> {
   try {
-    const response = await fetch('http://localhost:3000/user');
+    const response = await fetch(' http://ec2-13-49-240-203.eu-north-1.compute.amazonaws.com:5000');
     if (!response.ok) {
       throw new Error(`Failed to fetch user data. Status: ${response.status}`);
     }
