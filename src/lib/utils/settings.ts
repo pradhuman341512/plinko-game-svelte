@@ -5,3 +5,4 @@ export function hasPreferReducedMotion(): boolean {
   }
   return false;
 }
+

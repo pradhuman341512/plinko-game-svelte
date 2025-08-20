@@ -57,3 +57,21 @@ export type WinRecord = {
    */
   profit: number;
 };
+
+// Example: adjust to your actual data shape
+export interface UserData {
+  id: number;
+  name: string;
+  email?: string;
+}
+
+interface LaunchParams {
+  initDataRaw: string;
+  initData: {
+    user?: {
+      id: number;
+      name: string;
+      email?: string;
+    };
+  };
+}
